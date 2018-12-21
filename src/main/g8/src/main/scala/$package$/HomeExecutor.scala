@@ -1,4 +1,4 @@
-package xyz.janboerman.scalaloader.example.scala
+package $package$
 
 import java.util.UUID
 
