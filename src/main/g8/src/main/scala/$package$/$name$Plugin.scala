@@ -6,7 +6,7 @@ import xyz.janboerman.scalaloader.plugin.ScalaPluginDescription.{Command => SPCo
 import xyz.janboerman.scalaloader.plugin.{ScalaPlugin, ScalaPluginDescription}
 import xyz.janboerman.scalaloader.plugin.description.{Scala, ScalaVersion}
 
-@Scala(version = ScalaVersion.v2_12_7) //TODO change according to the scala version.
+@Scala(version = ScalaVersion.v2_12_8) //TODO change according to the scala version.
 object $name$Plugin
     extends ScalaPlugin(new ScalaPluginDescription("$name$", "$version$")
         .description("$pluginDescription$")
