@@ -2,9 +2,7 @@ name := "$name$"
 version := "$version$"
 organization := "$groupId$"
 
-val ScalaVer = "$scalaVersion$"
-
-scalaVersion := ScalaVer
+scalaVersion := "$scalaVersion$"
 scalacOptions += "-language:implicitConversions"
 
 packageOptions in (Compile, packageBin) +=
