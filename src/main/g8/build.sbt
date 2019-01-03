@@ -1,14 +1,18 @@
-name := "$name$"
-version := "$version$"
-organization := "$groupId$"
+val Name = "$name$"
+val Version = "$version$"
+val GroupId = "$groupId$"
+
+name := Name
+version := Version
+organization := GroupId
 
 scalaVersion := "$scalaVersion$"
 scalacOptions += "-language:implicitConversions"
 
 packageOptions in (Compile, packageBin) +=
-    Package.ManifestAttributes("Automatic-Module-Name" -> "$groupId$.$name$".toLowerCase)
+    Package.ManifestAttributes("Automatic-Module-Name" -> GroupId + "." + Name.toLowerCase)
 
-/*uncomment if you need more dependencies
+/* uncomment if you need more dependencies
 resolvers += Resolver.mavenCentral
 */
 resolvers += "jitpack" at "https://jitpack.io"
@@ -24,9 +28,9 @@ assemblyShadeRules in assembly := Seq(
 */
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
 assemblyMergeStrategy in assembly := {
-    case "plugin.yml"   => MergeStrategy.first
+    case "plugin.yml"   => MergeStrategy.first /* always choose our own plugin.yml if we shade other plugins */
     case x              =>
         val oldStrategy = (assemblyMergeStrategy in assembly).value
         oldStrategy(x)
 }
-assemblyJarName in assembly := "$name$.jar"
+assemblyJarName in assembly := Name + "-" + Version + ".jar"
