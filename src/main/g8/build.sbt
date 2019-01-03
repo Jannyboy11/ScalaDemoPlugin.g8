@@ -10,7 +10,7 @@ scalaVersion := "$scalaVersion$"
 scalacOptions += "-language:implicitConversions"
 
 packageOptions in (Compile, packageBin) +=
-    Package.ManifestAttributes("Automatic-Module-Name" -> GroupId + "." + Name.toLowerCase)
+    Package.ManifestAttributes("Automatic-Module-Name" -> (GroupId + "." + Name.toLowerCase))
 
 /* uncomment if you need more dependencies
 resolvers += Resolver.mavenCentral
