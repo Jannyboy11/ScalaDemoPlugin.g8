@@ -8,7 +8,7 @@ organization := GroupId
 
 scalaVersion := "$scalaVersion$"
 
-(Compile, packageBin) / packageOptions +=
+packageOptions in (Compile, packageBin) +=
     Package.ManifestAttributes("Automatic-Module-Name" -> (GroupId + "." + Name.toLowerCase))
 
 /* uncomment if you need more dependencies
