@@ -25,12 +25,12 @@ assemblyShadeRules in assembly := Seq(
     ShadeRule.rename("xyz.janboerman.guilib.**" -> "$package$.guilib.@1").inAll,
 )
 */
-assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
-assemblyMergeStrategy in assembly := {
+assembly / assemblyOption ~= { _.withIncludeScala(false) }
+assembly / assemblyMergeStrategy := {
     case "plugin.yml"       => MergeStrategy.first /* always choose our own plugin.yml if we shade other plugins */
     case "paper-plugin.yml" => MergeStrategy.first /* idem */
     case x                  =>
         val oldStrategy = (assemblyMergeStrategy in assembly).value
         oldStrategy(x)
 }
-assemblyJarName in assembly := Name + "-" + Version + ".jar"
+assembly / assemblyJarName := Name + "-" + Version + ".jar"
