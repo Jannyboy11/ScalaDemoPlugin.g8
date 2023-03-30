@@ -8,7 +8,7 @@ organization := GroupId
 
 scalaVersion := "$scalaVersion$"
 
-packageOptions in (Compile, packageBin) +=
+(Compile, packageBin) / packageOptions +=
     Package.ManifestAttributes("Automatic-Module-Name" -> (GroupId + "." + Name.toLowerCase))
 
 /* uncomment if you need more dependencies
@@ -30,7 +30,7 @@ assembly / assemblyMergeStrategy := {
     case "plugin.yml"       => MergeStrategy.first /* always choose our own plugin.yml if we shade other plugins */
     case "paper-plugin.yml" => MergeStrategy.first /* idem */
     case x                  =>
-        val oldStrategy = (assemblyMergeStrategy in assembly).value
+        val oldStrategy = (assembly / assemblyMergeStrategy).value
         oldStrategy(x)
 }
 assembly / assemblyJarName := Name + "-" + Version + ".jar"
