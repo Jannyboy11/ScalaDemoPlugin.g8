@@ -25,7 +25,7 @@ assembly / assemblyShadeRules := Seq(
     ShadeRule.rename("xyz.janboerman.guilib.**" -> "$package$.guilib.@1").inAll,
 )
 */
-assembly / assemblyOption ~= { _.withIncludeScala(false) }
+assembly / assemblyOption ~= { _.withIncludeScala(false).withIncludeDependency(false) }
 assembly / assemblyMergeStrategy := {
     case "plugin.yml"       => MergeStrategy.first /* always choose our own plugin.yml if we shade other plugins */
     case "paper-plugin.yml" => MergeStrategy.first /* idem */
